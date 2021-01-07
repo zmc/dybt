@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import { DeleteForever } from '@material-ui/icons';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 
 import useActions from '../../hooks/useActions';
