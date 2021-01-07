@@ -30,7 +30,8 @@
     "date-fns": "^2.16.1",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
-    "preact-router": "^3.2.1"
+    "preact-router": "^3.2.1",
+    "react-calendar": "^3.3.0"
   },
   "jest": {
     "preset": "jest-preset-preact",
