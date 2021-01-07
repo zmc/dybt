@@ -7,7 +7,7 @@ import style from './style.css';
 
 const Action = (props) => {
   const { removeAction, getActionStatus, markDone } = useActions();
-  const date = format(new Date, "yyyy-MM-dd");
+  const date = format(props.date || new Date, "yyyy-MM-dd");
   const remove = () => {
     removeAction(props.name);
   }
@@ -31,8 +31,7 @@ const Action = (props) => {
   )
 }
 
-const ActionList = () => {
-  console.log("ActionList");
+const ActionList = (props) => {
   const { getActions } = useActions();
   const actions = getActions();
   return (
@@ -40,7 +39,7 @@ const ActionList = () => {
       <p>Actions</p>
       <AddActionForm />
       { actions.map((item) => {
-        return <Action name={item} />
+        return <Action name={item} date={props.date}/>
       })}
     </div>
   )
