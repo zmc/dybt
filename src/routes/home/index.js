@@ -9,12 +9,12 @@ import style from './style.css';
 
 const Home = () => {
   const [date, setDate] = useState(new Date());
-  console.log("Home");
+  const [editing, setEditing] = useState(false);
   return (
     <div class={style.home}>
-      <h1>{ format(date, "yyyy-MM-dd") }</h1>
+      <h1 class={style.big_date}>{ format(date, "yyyy-MM-dd") }</h1>
       <DatePicker date={ date } setDate={ setDate } />
-      <ActionList date={date}/>
+      <ActionList date={date} editing={editing} setEditing={setEditing} />
     </div>
   )
 };

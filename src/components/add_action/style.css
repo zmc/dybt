@@ -1,0 +1,8 @@
+.add_action_form {
+  display: flex;
+}
+
+.right_align {
+  margin-left: auto !important;
+  margin-right: 0px;
+}

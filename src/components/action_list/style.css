@@ -1,6 +1,10 @@
 .action_list {
 }
 
+.action_list_header {
+  display: flex;
+}
+
 .action_list .action {
   display: flex;
 }

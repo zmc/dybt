@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import { DeleteForever } from '@material-ui/icons';
+import EditIcon from '@material-ui/icons/Edit';
 
 import useActions from '../../hooks/useActions';
 import AddActionForm from '../add_action';
@@ -24,15 +25,22 @@ const Action = (props) => {
     const icon = done? <CheckBox /> : <CheckBoxOutlineBlankIcon />
     return <IconButton onClick={ toggleDone }>{ icon }</IconButton>
   }
+  const deleteButton = () => {
+    if ( props.editing ) {
+      return (
+        <IconButton onClick={remove} color="primary">
+          <DeleteForever />
+        </IconButton>
+      )
+    }
+  }
 
   return (
     <div class={style.action}>
       <Typography>{ props.name }</Typography>
       <span class={style.button_group}>
         { statusButton() }
-        <IconButton onClick={remove} color="primary">
-          <DeleteForever />
-        </IconButton>
+        { deleteButton() }
       </span>
     </div>
   )
@@ -41,12 +49,23 @@ const Action = (props) => {
 const ActionList = (props) => {
   const { getActions } = useActions();
   const actions = getActions();
+  const toggleEditing = () => {
+    props.setEditing(! props.editing);
+  }
+
   return (
     <div class={style.action_list}>
-      <p>Actions</p>
-      <AddActionForm />
+      <div class={style.action_list_header}>
+        <Typography>Actions</Typography>
+        <span class={style.button_group}>
+          <IconButton onClick={toggleEditing}>
+            <EditIcon/>
+          </IconButton>
+        </span>
+      </div>
+      <AddActionForm editing={props.editing}/>
       { actions.map((item) => {
-        return <Action name={item} date={props.date}/>
+        return <Action name={item} date={props.date} editing={props.editing}/>
       })}
     </div>
   )

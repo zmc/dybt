@@ -5,7 +5,9 @@ import AddIcon from '@material-ui/icons/Add';
 
 import useActions from '../../hooks/useActions';
 
-const AddActionForm = () => {
+import style from './style.css';
+
+const AddActionForm = (props) => {
   const [actionName, setActionName] = useState();
   const { addAction } = useActions();
   const onInput = (e) => {
@@ -15,12 +17,20 @@ const AddActionForm = () => {
     addAction(actionName);
   }
 
-  return (
-    <div>
-      <TextField type="text" value={actionName} onInput={onInput}/>
-      <IconButton onClick={onClick}><AddIcon /></IconButton>
-    </div>
-  )
+  if ( props.editing ) {
+    return (
+      <div class={style.add_action_form}>
+        <TextField 
+          value={actionName}
+          onInput={onInput}
+          placeholder="do a thing"
+        />
+        <IconButton className={style.right_align} onClick={onClick}>
+          <AddIcon />
+        </IconButton>
+      </div>
+    )
+  }
 }
 
 export default AddActionForm;
