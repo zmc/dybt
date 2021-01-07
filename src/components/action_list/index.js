@@ -1,4 +1,9 @@
 import format from 'date-fns/format';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import CheckBox from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import { DeleteForever } from '@material-ui/icons';
 
 import useActions from '../../hooks/useActions';
 import AddActionForm from '../add_action';
@@ -16,16 +21,18 @@ const Action = (props) => {
   }
   const done = getActionStatus(props.name, date);
   const statusButton = () => {
-    const text = done? 'undo' : 'do';
-    return <button onClick={ toggleDone }>{ text }</button>
+    const icon = done? <CheckBox /> : <CheckBoxOutlineBlankIcon />
+    return <IconButton onClick={ toggleDone }>{ icon }</IconButton>
   }
 
   return (
     <div class={style.action}>
-      <span>{ props.name }</span>
+      <Typography>{ props.name }</Typography>
       <span class={style.button_group}>
         { statusButton() }
-        <button onClick={remove}>x</button>
+        <IconButton onClick={remove} color="primary">
+          <DeleteForever />
+        </IconButton>
       </span>
     </div>
   )
