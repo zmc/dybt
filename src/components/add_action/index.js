@@ -1,4 +1,8 @@
 import { useState } from 'preact/hooks';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+
 import useActions from '../../hooks/useActions';
 
 const AddActionForm = () => {
@@ -13,8 +17,8 @@ const AddActionForm = () => {
 
   return (
     <div>
-      <input type="text" value={actionName} onInput={onInput}/>
-      <button onClick={onClick}>+</button>
+      <TextField type="text" value={actionName} onInput={onInput}/>
+      <IconButton onClick={onClick}><AddIcon /></IconButton>
     </div>
   )
 }
