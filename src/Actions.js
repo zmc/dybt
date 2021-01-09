@@ -5,16 +5,20 @@ const defaultValue = {
   'floss': {}
 };
 
-const initialState = JSON.parse(
-  localStorage.getItem('actions') ||
-  JSON.stringify(defaultValue)
-);
+function getInitialState() {
+  if (typeof window === "undefined") {
+    return {}
+  }
+  return JSON.parse(
+    localStorage.getItem('actions') ||
+    JSON.stringify(defaultValue)
+  )
+}
 
 const ActionsContext = createContext([{}, () => {}]);
 
 const ActionsProvider = (props) => {
-  console.log("ActionsProvider");
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(getInitialState());
   return (
     <ActionsContext.Provider value={[state, setState]}>
       {props.children}
