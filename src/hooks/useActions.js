@@ -7,7 +7,6 @@ function useActions() {
 
   function getActions() {
     const action_names = Object.keys(actions);
-    console.log(action_names);
     if (action_names === undefined) {
       return ['example']
     } else {
@@ -16,14 +15,12 @@ function useActions() {
   }
 
   function setActions(new_actions) {
-    console.log("setActions");
     if ( actions == new_actions ) { return }
     localStorage.setItem('actions', JSON.stringify(new_actions));
     _setActions(new_actions);
   }
 
   function addAction(action) {
-    console.log(`adding ${action}`);
     if ( actions[action] === undefined ) {
       const new_actions = {...actions};
       new_actions[action] = {};
@@ -32,7 +29,6 @@ function useActions() {
   }
 
   function removeAction(action) {
-    console.log(`removing ${action}`);
     if ( actions[action] === undefined ) { return }
     const new_actions = {...actions};
     delete new_actions[action];
@@ -45,7 +41,6 @@ function useActions() {
 
   function getActionStatus(action, date) {
     const status = actions[action][date];
-    //console.log(`${action} done: ${status}`);
     if ( status === undefined ) { return false }
     else if ( status === false ) { return false }
     else if ( status === 0 ) { return false }
@@ -55,7 +50,6 @@ function useActions() {
   }
 
   function markDone(action, date, done) {
-    console.log(`markDone ${action} ${date} ${done}`);
     if ( done === undefined ) { done = true }
     const new_actions = {...actions};
     if ( done === true ) {
