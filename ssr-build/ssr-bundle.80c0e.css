@@ -96,8 +96,17 @@ html, body {
   margin-right: 0px;
 }
 
-div.datepicker__2NiFk {
-  width: 100%;
+.adjuster__2ODRl {
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.date__3Qdc7 {
+  font-weight: bold;
 }
 
 .home__MseGd {
@@ -117,4 +126,4 @@ div.datepicker__2NiFk {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.35467.css.map*/
+/*# sourceMappingURL=ssr-bundle.80c0e.css.map*/
